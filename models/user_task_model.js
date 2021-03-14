@@ -9,6 +9,6 @@ const userTaskSchema = mongoose.Schema({
   },
 });
 module.exports = mongoose.model(
-  "UserTask",   // name Collection
+  "User",   // name Collection
   userTaskSchema,
 );
