@@ -28,17 +28,20 @@ mongoose.connect(
 );
 
 const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
+db.on("error", console.error.bind(console, "Shady! Connection Error:"));
 
 db.once("open", function () {
-  console.log("hurray! Mongo db connected");
+  console.log("Shady! Mongo DB Connected");
 });
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+app.get("/", (req, res) => {
+  res.send("Good Open Web Host");
+});
 app.get("/homepage", (req, res) => {
-  res.send("Yay!!!!");
+  res.send("Home Page");
 });
 app.use(express.json());
 const userTaskRoute = require("./routes/user_task");
