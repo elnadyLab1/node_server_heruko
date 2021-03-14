@@ -7,7 +7,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://tranquil-escarpment-92025.herokuapp.com/userTask/createUserTask
+POST https://nameless-bastion-41473.herokuapp.com/userTask/createUserTask
 Content-Type: application/json
 
 {
@@ -21,7 +21,7 @@ GET http://localhost:5000/userTask/getUserTask
 
 ###
 
-GET http://tranquil-escarpment-92025.herokuapp.com/userTask/getUserTask
+GET https://nameless-bastion-41473.herokuapp.com/userTask/getUserTask
 
 ###
 PATCH http://localhost:5000/userTask/updateTask/5fabdfbbbd78883ad48e8a63
