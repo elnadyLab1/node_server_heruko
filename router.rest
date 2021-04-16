@@ -1,33 +1,56 @@
-POST http://localhost:5000/userTask/createUserTask
+POST http://127.0.0.1:5000/user/createUser
 Content-Type: application/json
 
 {
-    "taskTitle":"aaaaaaa",
-    "taskDescription":"bbbbbbbbbbbb"
+    "name":"shady elandy",
+    "email":"shady@gmail.com",
+    "age":40
 }
 
 ###
-POST https://nameless-bastion-41473.herokuapp.com/userTask/createUserTask
+POST http://127.0.0.1:5000/user/createUser
 Content-Type: application/json
 
 {
-    "taskTitle":"deploy to heroku",
-    "taskDescription":"important to connect client app with server"
+    "name":"shady 1",
+    "email":"shady1@gmail.com",
+    "age":40
 }
 
 ###
 
-GET http://localhost:5000/userTask/getUserTask
-
-###
-
-GET https://nameless-bastion-41473.herokuapp.com/userTask/getUserTask
-
-###
-PATCH http://localhost:5000/userTask/updateTask/5fabdfbbbd78883ad48e8a63
+POST http://127.0.0.1:5000/user/createUser
 Content-Type: application/json
 
 {
-    "taskTitle":"updating done!"
+    "name":"shady 2",
+    "email":"shady2@gmail.com",
+    "age":40
+}
 
+###
+
+GET http://127.0.0.1:5000/user/getUsers
+
+###
+
+POST https://nameless-bastion-41473.herokuapp.com/user/createUser
+Content-Type: application/json
+
+{
+    "name":"heroku",
+    "email":"heroku@gmail.com",
+    "age":30
+}
+
+###
+
+GET https://nameless-bastion-41473.herokuapp.com/user/getUsers
+
+###
+PATCH http://127.0.0.1:5000/user/updateUser/5fabdfbbbd78883ad48e8a63
+Content-Type: application/json
+
+{
+    "name":"new shady"
 }

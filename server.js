@@ -1,10 +1,14 @@
 const express = require("express"); //importing express
 const app = express(); //making express object.
-const port = process.env.PORT || 5000;
 const server = require("http").createServer(app);
-const UserTask = require("./models/user_task_model");
-
 const io = require("socket.io")(server);
+
+const host = process.env.HOST || "127.0.0.1";
+const port = process.env.PORT || 5000;
+
+// App use
+app.use(express.json());
+app.use(express.urlencoded());
 
 //socket io
 io.of("/api/socket").on("connect", (socket) => {
@@ -19,11 +23,10 @@ io.of("/api/socket").on("connect", (socket) => {
 const mongoose = require("mongoose");
 mongoose.connect(
   "mongodb+srv://shady:12345@cluster0.vblar.mongodb.net/MyDatabase?retryWrites=true&w=majority",
-  // "mongodb+srv://taskUser:iwillnottellu@cluster0.os32m.mongodb.net/MyDatabase?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false
+    useFindAndModify: false,
   }
 );
 
@@ -31,18 +34,21 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Shady! Connection Error:"));
 
 db.once("open", function () {
-  console.log("Shady! Mongo DB Connected");
+  console.log("Shady! Success Mongo DB Connected");
 });
+
+app.get("/", (req, res) => {
+  res.send("<h1>Wellcome Good Open Web Host Server</h1>");
+});
+
+// User Route
+const userRoute = require("./routes/user");
+app.use("/user", userRoute);
+
+// PayPal Route
+const payRoute = require("./routes/payPal");
+app.use("/payPal", payRoute);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-app.get("/", (req, res) => {
-  res.send("Good Open Web Host");
-});
-app.get("/homepage", (req, res) => {
-  res.send("Home Page");
-});
-app.use(express.json());
-const userTaskRoute = require("./routes/user_task");
-app.use("/userTask", userTaskRoute);

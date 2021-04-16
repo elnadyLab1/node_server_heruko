@@ -1,14 +1,19 @@
 const mongoose = require("mongoose");
-const userTaskSchema = mongoose.Schema({
-  taskTitle: {
+
+const userSchema = mongoose.Schema({
+  name: {
     type: String,
     required: true,
   },
-  taskDescription: {
+  email: {
     type: String,
   },
+  age: {
+    type: Number,
+  },
 });
+
 module.exports = mongoose.model(
   "User",   // name Collection
-  userTaskSchema,
+  userSchema,
 );
